@@ -1,0 +1,35 @@
+package com.lec.cookie;
+
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.util.HashMap;
+import java.util.Map;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+
+public class MyCookie {
+
+	private Map<String, Cookie> map = new HashMap<>();
+	
+	public MyCookie(HttpServletRequest req) {
+		Cookie[] cookies = req.getCookies();
+		if(cookies != null) {
+			for(int i=0; i<cookies.length; i++) {
+				map.put(cookies[i].getName(), cookies[i]);
+			}
+		}
+	}
+	
+	public Cookie get Cookie(String name) {
+		return map.get(name);
+	}
+	
+	public String getValue(String name) throws Exception {
+		Cookie cookie = map.get(name);
+		if(cookie == null) return null;
+		return URLDecoder.decode(cookie.getValue(), "utf-8");
+
+	}
+
+	
+}

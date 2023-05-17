@@ -1,0 +1,71 @@
+package com.lec.dbcp;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+
+public class DBCPInit extends HttpServlet {
+
+	
+	@Override
+	public void init() throws ServletException {
+		loadJDBCDriver();
+		initConnectionPool();
+	}
+
+	
+	private void loadJDBCDriver() {
+		// Class.forName("org.mariadb..."); 대신
+		// web.xml에 정의하여 로딩
+		String driverClass = getInitParameter("jdbcDriver");
+		
+		try {
+			Class.forName(driverClass);
+		} catch (ClassNotFoundException e) {
+			throw new RuntimeException("JDBC Driver Loaded Failure" + " CHECK web.xml init parameter jdbcDriver");
+		}
+	}
+	
+	
+	private void initConnectionPool() {
+
+		String url = getInitParameter("url");
+		String usr = getInitParameter("user");
+		String pwd = getInitParameter("pass");
+	
+		
+		// Connection Pool 정의를 위해 Library 등록
+		// commons-dbcp2-2.9.0.jar common-pool2-2.11.1.jar
+		// commons-logging-1.2.jar
+		
+		// A. Connection Factory 생성
+		// 1. 
+		// 2. 
+		// 3. 
+		
+		// B. Connection Pool 설정 정보
+		// 1. 
+		// 2. 
+		// 3.
+		// 4.
+		// 5.
+		
+		// C. Connection Pool 설정 정보를 이용해 Connection Pool 생성
+		// 1.
+		// 2. 
+		
+		// D. Connection Pool 에 제공할 JDBC드라이버 등록
+		
+	}
+
+	
+}
+
+
+
+
+
+
+
+
+
+

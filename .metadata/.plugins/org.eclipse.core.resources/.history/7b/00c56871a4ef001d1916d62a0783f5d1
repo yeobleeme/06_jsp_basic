@@ -1,0 +1,32 @@
+<%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<!-- 
+	A. JSP의 영역: scope
+	
+	  1. page
+	  
+	    하나의 jsp페이지마다 사용되는 영역이다. page영역은 한 번의 클라이언트 요청에 대해서
+	    하나의 jsp페이지를 메모리 영역으로 한다. 웹브라우저의 요청이 들어오면 jsp페이지를 
+	    실행하는데, 이 때 jsp페이지를 실행하는 범위가 page영역이다.
+	    이 영역은 pageContext객체의 영역이다.
+	  
+	  2. request
+	  
+	    하나의 http요청을 처리할 때 사용되는 영역이다. request영역은 웹브라우저의 요청과
+	    관련이 있다. 웹브라우저의 주소창에 url을 입력하거나 링크를 클릭해서 페이지를 이동할 때
+	    웹브라우저가 웹서버에 전송하는 요청이 하나의 request영역이다.
+	  
+	  3. session
+	  4. application
+	
+	B. JSP기본객체의 속성: attribute
+-->
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+</body>
+</html>

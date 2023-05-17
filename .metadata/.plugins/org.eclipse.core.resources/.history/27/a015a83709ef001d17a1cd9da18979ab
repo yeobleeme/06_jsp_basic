@@ -1,0 +1,48 @@
+<%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<%
+	request.setCharacterEncoding("UTF-8");
+%>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<h3>Registered Information</h3>
+	<table border="1">
+	<tr>
+	<td>ID</td>
+	<td><%= request.getParameter("id") %></td>
+	</tr>
+	<th>PW</th>
+	<td><%= request.getParameter("pw") %></td>
+	</tr>
+	<th>CONTACT</th>
+	<td><%= request.getParameter("contact") %></td>
+	</tr>
+	<tr>GENDER
+	<td><%= request.getParameter("gender") %></td>
+	</tr>
+	<tr>HOBBY
+	<td><%= request.getParameterValues("hobbies") %></td>
+	<%
+		String[] hobbies = request.getParameterValues("hobbies");
+		if(hobbies != null) {
+			for(String hobby:hobbies) {
+	%>
+				HOBBY = <%= hobby %> <br>
+	<%	
+			}
+		}
+	%>
+	</tr>
+	<tr>COMMENT
+	<td><%= request.getParameter("comment") %></td>
+	</tr>
+	</table>
+	
+
+</body>
+</html>

@@ -1,0 +1,5 @@
+<%@tag body-content="empty" pageEncoding="UTF-8"%>
+<%@tag import="java.util.Calendar"%>
+<%
+	Calendar cal = Calendar.getInstance();
+%>

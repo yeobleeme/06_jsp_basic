@@ -1,0 +1,12 @@
+package com.lec.board;
+
+public class BoardMain {
+
+	public static void main(String[] args) {
+		
+		BoardList bl = new BoardList();
+		ArrayList<Board> boards = bl.getBoardList();
+
+	}
+
+}

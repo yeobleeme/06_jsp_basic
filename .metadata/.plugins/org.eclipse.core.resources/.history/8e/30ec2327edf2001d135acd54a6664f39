@@ -1,0 +1,15 @@
+<%@tag body-content="empty" pageEncoding="UTF-8" %>
+<%@tag trimDirectiveWhitespaces="true" %>
+<%@attribute name="title" required="true" %>
+<%@attribute name="level" required="false" type="java.lang.Integer" %>
+
+<%
+	String headerStartTag = null;
+	String headerEndTag = null;
+	
+	if(level == null) {
+		
+	} else if(level == 1) {
+		
+	}
+%>

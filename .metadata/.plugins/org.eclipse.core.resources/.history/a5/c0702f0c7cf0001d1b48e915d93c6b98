@@ -1,0 +1,25 @@
+<%@page import="com.lec.cookie.MyCookie"%>
+<%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<% 
+	String id = request.getParameter("id");
+	String pw = request.getParameter("pw");
+	
+	if(id.equals(pw)) {
+		session.setAttribute("admin", id);
+		%>
+		<html>
+			<meta charset="UTF-8">
+			
+		</html>
+		<h3>Log in Success</h3>
+%>
+<h3>Log In Success</h3>
+<%
+	} else {
+%>
+	<script>
+		alert("Log In Failed - ID and PW are not correct")
+	</script>		
+<%
+	}
+%>

@@ -1,0 +1,7 @@
+package com.lec.web.jdbc;
+
+public class JDBCUtil {
+	
+	public static void close(Connection conn, Statement stmt, ResultSet rs) 
+
+}

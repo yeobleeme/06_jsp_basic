@@ -1,0 +1,6 @@
+<%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<!--  
+	url 관련 태그는 url 생성과 redirect 기능을 제공한다.
+-->

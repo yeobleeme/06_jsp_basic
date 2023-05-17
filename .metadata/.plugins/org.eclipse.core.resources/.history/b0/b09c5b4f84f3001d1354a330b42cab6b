@@ -1,0 +1,28 @@
+package com.lec.board;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+import com.lec.ex03_connector.JDBCConnector;
+
+public class BoardList {
+	
+	public ArrayList<Board> getBoardList() {
+		
+		Connection conn = JDBCConnector.getConnection();
+		
+		try {
+			PreparedStatement pstmt = conn.prepareStatement("select * from board order by bno desc");
+			ResultSet rs = pstmt.executeQuery();
+		} catch (SQLException e) {
+			System.out.println("SQL 실행 실패.");
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
+
+}

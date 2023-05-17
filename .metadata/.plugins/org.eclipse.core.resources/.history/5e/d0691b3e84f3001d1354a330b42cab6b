@@ -1,0 +1,20 @@
+package com.lec.board;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.util.ArrayList;
+
+import com.lec.ex03_connector.JDBCConnector;
+
+public class BoardList {
+	
+	public ArrayList<Board> getBoardList() {
+		
+		Connection conn = JDBCConnector.getConnection();
+		
+		PreparedStatement pstmt = conn.prepareStatement("select * from board order by bno desc");
+		
+		return null;
+	}
+
+}

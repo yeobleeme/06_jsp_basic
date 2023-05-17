@@ -1,0 +1,4 @@
+<%@tag body-content="empty" pageEncoding="UTF-8"%>
+<%@tag trimDirectiveWhitespaces="true" %>
+<%@tag dynamic-attributes="map" %>
+<%@attribute name="xxx" required="true" %>

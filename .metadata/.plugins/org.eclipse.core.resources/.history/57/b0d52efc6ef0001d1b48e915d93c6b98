@@ -1,0 +1,11 @@
+package com.lec.cookie;
+
+import java.util.HashMap;
+import java.util.Map;
+import javax.servlet.http.Cookie;
+
+public class MyCookie {
+
+	private Map<String, Cookie> map = new HashMap<>();
+	
+}

@@ -1,0 +1,10 @@
+package com.lec.web.service;
+
+public class GetMessageList {
+
+	// singleton
+	private GetMessageList() {}
+	private static GetMessageList instance = new GetMessageList();
+	public static GetMessageList getInstance() { return instance; }
+	
+}

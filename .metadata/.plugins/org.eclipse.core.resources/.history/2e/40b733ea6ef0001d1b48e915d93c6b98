@@ -1,0 +1,10 @@
+package com.lec.cookie;
+
+import java.util.Map;
+import javax.servlet.http.Cookie;
+
+public class MyCookie {
+
+	private Map<String, Cookie> map = new Map<String, Cookie>();
+	
+}

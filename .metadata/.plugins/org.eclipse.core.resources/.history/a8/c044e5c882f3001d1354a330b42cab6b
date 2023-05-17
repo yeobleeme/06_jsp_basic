@@ -1,0 +1,9 @@
+package com.lec.board;
+
+public class BoardList {
+	
+	public void getBoardList() {
+		
+	}
+
+}

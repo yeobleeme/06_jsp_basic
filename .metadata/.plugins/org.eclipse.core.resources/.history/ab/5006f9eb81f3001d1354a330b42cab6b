@@ -1,0 +1,23 @@
+package com.lec.board;
+
+public class Board {
+	
+	private int bno;
+	private String subject;
+	private String writer;
+	private String crtdate;
+	private int readcnt;
+	private String content;
+	
+	public Board() {
+		this.bno = 0;
+		this.subject = subject;
+		this.writer = writer;
+		this.crtdate = crtdate;
+		this.readcnt = readcnt;
+		this.content = content;
+	}
+	
+	
+
+}

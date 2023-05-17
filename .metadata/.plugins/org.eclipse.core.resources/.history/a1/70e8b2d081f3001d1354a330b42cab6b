@@ -1,0 +1,11 @@
+package com.lec.board;
+
+public class Board {
+	
+	private int bno;
+	private String subject;
+	private String writer;
+	private String crtdate;
+	private int readcnt;
+
+}

@@ -1,0 +1,33 @@
+package com.lec.web.service;
+
+import java.sql.Connection;
+import java.sql.SQLException;
+
+import com.lec.web.dao.MessageDAO;
+import com.lec.web.jdbc.ConnectionProvider;
+
+public class GetMessageListService {
+
+	// singleton
+	private GetMessageListService() {}
+	private static GetMessageListService instance = new GetMessageListService();
+	public static GetMessageListService getInstance() { return instance; }
+	
+	public void getMessageList() {
+		
+		Connection conn = null;
+		
+		try {
+			conn = ConnectionProvider.getConnection();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		
+		MessageDAO messageDAO = MessageDAO.getInstance();
+		
+	}
+	
+}

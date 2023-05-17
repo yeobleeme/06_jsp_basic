@@ -1,0 +1,9 @@
+package com.lec.el;
+
+public class StaticMethod {
+
+	public static String staticMethod(long num, String pattern) {
+		
+	}
+	
+}

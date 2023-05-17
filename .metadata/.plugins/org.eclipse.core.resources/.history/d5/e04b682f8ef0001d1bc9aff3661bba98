@@ -1,0 +1,7 @@
+package com.lec.el;
+
+public class Thermometer {
+
+	private Map<String, Double> map = new HashMap<>();
+	
+}

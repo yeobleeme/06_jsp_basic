@@ -1,0 +1,21 @@
+<%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<!-- 
+	A. JSP의 영역: scope
+	
+	  1. page
+	  2. request
+	  3. session
+	  4. application
+	
+	B. JSP기본객체의 속성: attribute
+-->
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+</body>
+</html>
