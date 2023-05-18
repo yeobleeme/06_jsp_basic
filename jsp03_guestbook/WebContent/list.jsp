@@ -1,3 +1,4 @@
+<%@page import="com.lec.web.service.MessageListView"%>
 <%@page import="com.lec.web.service.GetMessageListService"%>
 <%@page import="java.util.List"%>
 <%@page import="com.lec.web.dao.MessageDAO"%>
@@ -7,9 +8,14 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <%
-	GetMessageListService messageListService = GetMessageListService.getInstance();
+	int pageNumber = 1;
+	if(request.getParameter("page") != null) {
+		pageNumber = Integer.parseInt(request.getParameter("page"));
+	}
 
-	List<Message> view_data = messageListService.getMessageList();
+	GetMessageListService messageListService = GetMessageListService.getInstance();
+	MessageListView view_data = messageListService.getMessageList(pageNumber);
+	session.setAttribute("pag", pageNumber);
 
 %>
 
@@ -88,7 +94,7 @@
 		
 		</form>
 		
-		<c:if test="${ view_data.isEmpty() }">
+		<c:if test="${ view_data.messageList.isEmpty() }">
 			<p class="bg-danger text-white">There is no message.</p>
 		</c:if>
 		
@@ -103,13 +109,13 @@
 				</tr>
 			</thead>
 			<tbody>		
-			<c:forEach var="message" items="${ view_data }">
+			<c:forEach var="message" items="${ view_data.messageList }">
 				<tr>
-					<td> <a href="update_form.jsp?id=${ message.id }">${ message.id }</a> </td>
+					<td> <a href="update_form.jsp?id=${ message.id }&cp=${ view_data.currentPage }">${ message.id }</a> </td>
 					<td>${ message.guestName }</td>
 					<td>${ message.password }</td>
 					<td>${ message.message }</td>
-					<td><a href="delete_form.jsp?id=${message.id}"><i class="fas fa-trash-alt"></i></a></td>
+					<td><a href="delete_form.jsp?id=${message.id}&cp=${ view_data.currentPage }"><i class="fas fa-trash-alt"></i></a></td>
 				</tr>
 			</c:forEach>
 			</tbody>	
@@ -120,20 +126,30 @@
 	
 	<br />
 	<div class="container">
+	
 		<ul class="pagination justify-content-center">
-		
-			<li class="page-item"><a href="list.jsp?page=1" class="page-link"><i class="fas fa-fast-backward"></i></a></li>
-			<li class="page-item"><a href="list.jsp?page=1" class="page-link"><i class="fas fa-backward"></i></a></li>
 			
-			<c:forEach var="page_num" begin="1" end="10">
-				<li class="page-item"><a href="list.jsp?page=${ page_num }" class="page-link">${ page_num }</a></li>
+			<c:set var="page" value="${ (empty param.page) ? 1 : param.page }"/>
+			<c:set var="startPage" value="${ page-(page-1)%view_data.perPage }"/>
+			<c:set var="endPage" 
+			       value="${ (startPage+9) >= view_data.pageTotalCount ? pageTotalCount : startPage+9 }"/>
+			
+			<c:if test="${startPage!=1}">
+				<li class="page-item"><a href="list.jsp?page=1" class="page-link"><i class="fas fa-fast-backward"></i></a></li>
+				<li class="page-item"><a href="list.jsp?page=${ startPage - 10 }" class="page-link"><i class="fas fa-backward"></i></a></li>			
+			</c:if>
+
+			<c:forEach var="page_num" begin="${ startPage }" end="${ endPage }">
+				<li class="page-item"><a href="list.jsp?page=${page_num}" class="page-link">${page_num}</a></li>
 			</c:forEach>
 		
-			<li class="page-item"><a href="list.jsp?page=100" class="page-link"><i class="fas fa-forward"></i></a></li>
-			<li class="page-item"><a href="list.jsp?page=100" class="page-link"><i class="fas fa-fast-forward"></i></a></li>
-			
+			<c:if test="${ endPage < view_data.pageTotalCount}">
+				<li class="page-item"><a href="list.jsp?page=${ endPage + 1 }" class="page-link"><i class="fas fa-forward"></i></a></li>
+				<li class="page-item"><a href="list.jsp?page=${ view_data.getPageTotalCount() }" class="page-link"><i class="fas fa-fast-forward"></i></a></li>			
+			</c:if>
 		</ul>
 	</div>
+	
 </body>
 </html>
 

@@ -1,40 +1,57 @@
 package com.lec.web.service;
 
 import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.Collections;
 import java.util.List;
 
 import com.lec.web.dao.MessageDAO;
+import com.lec.web.exception.ServiceException;
 import com.lec.web.jdbc.ConnectionProvider;
 import com.lec.web.jdbc.JDBCUtil;
 import com.lec.web.model.Message;
 
 public class GetMessageListService {
-
-	// singleton
+	
+	// sigleton
 	private GetMessageListService() {}
 	private static GetMessageListService instance = new GetMessageListService();
 	public static GetMessageListService getInstance() { return instance; }
 	
-	public List<Message> getMessageList() {
-		
+	public static final int MESSAGE_COUNT_PER_PAGE = 10;
+	
+	public MessageListView getMessageList(int pageNumber) {
+	
 		Connection conn = null;
+		int currentPage = pageNumber;
 		
 		try {
+			// 커넥션풀에서 사용가능한 Connection을 커넥션제공자를 통해 가져오기
 			conn = ConnectionProvider.getConnection();
 			MessageDAO messageDAO = MessageDAO.getInstance();
 			
 			List<Message> messageList = null;
-			messageList = messageDAO.selectList(conn, 0, 10);
+			int totalCount = messageDAO.selectCount(conn);
+			int start = 0;
+			int end = 0;
 			
-			return messageList;
+			if(totalCount > 0) {
+				start = (pageNumber - 1) * MESSAGE_COUNT_PER_PAGE;
+				end = MESSAGE_COUNT_PER_PAGE;
+				messageList = messageDAO.selectList(conn, start, end);	
+			} else {
+				currentPage = 0;
+				messageList = Collections.emptyList();
+			}
+
 			
-		} catch (Exception e) {
-			e.printStackTrace();
+			return new MessageListView(messageList, totalCount, currentPage, MESSAGE_COUNT_PER_PAGE, start, end);
+			
+		} catch (SQLException e) {
+			throw new ServiceException("Failed to view Message List" + e.getMessage(), e);
 		} finally {
 			JDBCUtil.close(conn, null, null);
 		}
-		return null;
-		
 	}
 	
 }
