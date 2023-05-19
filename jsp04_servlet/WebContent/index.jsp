@@ -11,7 +11,7 @@
 </head>
 <body>
    <div class="container" align="center">
-      <h3>로그인</h3>
+      <h3>Log In</h3>
       <form action="login" method="post" clss="form-group">
          <input type="text" name="id" value="root" class="mb-sm-2"><br>
          <input type="password" name="pw" value="12345" class="mb-sm-2"><br>
