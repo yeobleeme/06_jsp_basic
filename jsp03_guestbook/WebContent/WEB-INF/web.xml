@@ -28,7 +28,7 @@
   	
   	<init-param>
   		<param-name>pass</param-name>
-  		<param-value>12345</param-value>
+  		<param-value>1234</param-value>
   	</init-param>
   	
   	<init-param>

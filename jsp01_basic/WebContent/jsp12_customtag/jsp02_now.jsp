@@ -17,7 +17,5 @@
 	
 	<h1>커스텀 태그</h1>
 	<h4>오늘은 <b>[ <my:now /> ]</b>일 입니다.</h4>
-	<my:header />
-	<my:select />
 </body>
 </html>

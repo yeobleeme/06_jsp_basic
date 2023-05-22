@@ -79,6 +79,7 @@ public class LoginServlet extends HttpServlet {
 			e.printStackTrace();
 			req.setAttribute("error_message", e.getMessage());
 			res.sendRedirect("/jsp08_member/resources/error.jsp");
+			return;
 		} finally {
 			JDBCUtil.close(conn, pstmt, rs);
 		}
