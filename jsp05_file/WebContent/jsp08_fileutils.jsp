@@ -6,8 +6,8 @@
 	request.setCharacterEncoding("utf-8");
 	String fileName = request.getParameter("f");
 	
-	String src = "D:/LEEJY/123123/" + fileName;
-	String des = "D:/LEEJY/123123/to/";
+	String src = "/Users/yeoblee/Desktop/test/" + fileName;
+	String des = "/Users/yeoblee/Desktop/test/";
 	
 	File srcFile = new File(src);
 	File desDir = new File(des);

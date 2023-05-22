@@ -6,8 +6,8 @@
 	request.setCharacterEncoding("utf-8");
 	String fileName = request.getParameter("f");
 	
-	String fromPath = "D:/LEEJY/123123/" + fileName;
-	String toPath = "D:/LEEJY/123123/to/" + fileName;
+	String fromPath = "/Users/yeoblee/Desktop/test/" + fileName;
+	String toPath = "/Users/yeoblee/Desktop/test/to/" + fileName;
 
 	/*
 		실제웹서버운영시에 관련된 경로

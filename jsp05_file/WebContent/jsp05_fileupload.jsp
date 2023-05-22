@@ -5,7 +5,7 @@
 <%
 	String uploadPath = request.getRealPath("upload");
 	// out.println("<h3>" + uploadPath + "<h3>");
-	uploadPath = "D:/LEEJY/123123";
+	uploadPath = "/Users/yeoblee/Desktop/test/";
 	
 	String name = "";
 	String subject = "";

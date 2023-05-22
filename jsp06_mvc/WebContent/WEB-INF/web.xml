@@ -6,20 +6,32 @@
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
   
-  
+  <servlet-mapping>
+  	<servlet-name>UsingFile</servlet-name>
+  	<url-pattern>/file</url-pattern>
+  </servlet-mapping>
   
   <servlet>
-	  <servlet-name>UsingURI</servlet-name>
-	  <servlet-class>com.lec.controller.ControllerUsingUri</servlet-class>
-	  <init-param>
-		  <param-name>controllerURI</param-name>
-		  <param-value>/WEB-INF/commandHandlerURI.properties</param-value>
-	  </init-param>
+  	<servlet-name>UsingFile</servlet-name>
+  	<servlet-class>com.lec.controller.ControllerUsingFile</servlet-class>
+  	<init-param>
+  		<param-name>controllerFile</param-name>
+  		<param-value>/WEB-INF/commandHandler.properties</param-value>
+  	</init-param>
   </servlet>
   
   <servlet-mapping>
-	  <servlet-name>UsingURI</servlet-name>
-	  <url-pattern>*.do</url-pattern>
+  	<servlet-name>UsingURI</servlet-name>
+  	<url-pattern>*.do</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>UsingURI</servlet-name>
+  	<servlet-class>com.lec.controller.ControllerUsingURI</servlet-class>
+  	<init-param>
+  		<param-name>controllerURI</param-name>
+  		<param-value>/WEB-INF/commandHandlerURI.properties</param-value>
+  	</init-param>
+  </servlet>
   
 </web-app>
