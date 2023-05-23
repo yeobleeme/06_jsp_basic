@@ -13,8 +13,8 @@
 </head>
 <body>
    <div class="container bg-dark text-white jumbotron" align="center">
-      <h3>회원등록하기</h3>
-      <p>이 화면은 회원등록을 하기 위한 화면입니다!</p>
+      <h3>회원 등록</h3>
+      <p>신규 회원 등록 페이지</p>
    </div>
    
    <div class="container" align="center">

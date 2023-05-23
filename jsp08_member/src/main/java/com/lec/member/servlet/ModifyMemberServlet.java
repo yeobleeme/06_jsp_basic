@@ -83,7 +83,7 @@ public class ModifyMemberServlet extends HttpServlet {
 			}
 			
 		} else {
-			req.setAttribute("error_message", "로그인이 되지 않았습니다. 로그인 후 회원정보를 수정 가능");
+			req.setAttribute("error_message", "로그인이 되지 않았습니다. 로그인 후 회원정보 수정 가능");
 			res_url = "/login_form.jsp";
 		}
 		

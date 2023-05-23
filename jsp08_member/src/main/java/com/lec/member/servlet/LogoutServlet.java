@@ -34,7 +34,7 @@ public class LogoutServlet extends HttpServlet {
 		Member member = (Member) sess.getAttribute("login_info");
 		
 		if(member == null) {
-			req.setAttribute("error_message", "로그인되지 않았습니다. 로그인 후 로그아웃할 수 있습니다.");
+			req.setAttribute("error_message", "로그인되지 않았습니다. 로그인 후 로그아웃 가능");
 		} else {
 			sess.invalidate();  // session 종료
 		}

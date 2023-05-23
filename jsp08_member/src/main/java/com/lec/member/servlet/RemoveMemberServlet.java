@@ -71,8 +71,7 @@ public class RemoveMemberServlet extends HttpServlet {
 			}
 			
 		} else {
-			req.setAttribute("error_message", "로그인이 되지 않았습니다. " 
-					+ "로그인 후 회원정보를 수정할 수 있습니다!");
+			req.setAttribute("error_message", "로그인이 되지 않았습니다. 로그인 후 삭제 가능");
 			res_url = "/login_form.jsp";
 		}
 	

@@ -14,7 +14,7 @@
 <body>
 	<% List<Member> members = (ArrayList) request.getAttribute("members"); %>
 	<div class="container" align="center">
-		<h3>회원목록</h3>
+		<h3>회원 목록</h3>
 		<table class="table table-hover table-dark text-light">
 			<thead>
 				<tr>
