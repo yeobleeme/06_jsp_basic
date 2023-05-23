@@ -12,7 +12,7 @@
 <body>
 	<% Member member = (Member) request.getAttribute("member"); %>
 	<div class="container" align="center">
-		<h3>회원등록성공!!!</h3>
+		<h3>회원등록성공</h3>
 		<table class="table table-dark text-white">
 			<tr>
 				<td width="20%">아 이 디</td>

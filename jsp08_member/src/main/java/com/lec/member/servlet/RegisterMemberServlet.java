@@ -13,13 +13,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.lec.member.dto.Member;
 import com.lec.member.jdbc.JDBCUtil;
 
-@WebServlet("/login")
-public class LoginServlet extends HttpServlet {
+@WebServlet("/register")
+public class RegisterMemberServlet extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse res) 
@@ -33,52 +32,57 @@ public class LoginServlet extends HttpServlet {
 		process(req, res);
 	}
 
-	private void process(HttpServletRequest req, HttpServletResponse res)
+	
+	private void process(HttpServletRequest req, HttpServletResponse res) 
 			throws ServletException, IOException {
 		
+		req.setCharacterEncoding("utf-8");
 		String id = req.getParameter("id");
+		String name = req.getParameter("name");
 		String pw = req.getParameter("pw");
+		String ssn = req.getParameter("ssn");
+		String gender = req.getParameter("gender");
+		int mileage = 1000;
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String sql = "select id, password, name, regnumber, gender, mileage from member where id=?";
+		String sql = "";
+		String res_url = "";
+		int cnt = 0;
 		
 		ServletContext sct = getServletContext();
 		String url = sct.getInitParameter("url");
 		String usr = sct.getInitParameter("user");
 		String pwd = sct.getInitParameter("pass");
-		String res_url = "";
-		
 		
 		try {
 			conn = DriverManager.getConnection(url, usr, pwd);
+			sql = "select * from member where id=?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, id);
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
-				if(pw.equals(rs.getString(2))) {  // id가 있는 경우 pw를 비교
-					HttpSession sess = req.getSession();
-					Member member = new Member(id, pw, rs.getString(3), rs.getString(4), rs.getString(5), rs.getInt(6));
-					sess.setAttribute("login_info", member);
-					// res.sendRedirect("/jsp08_member/resources/login_success.jsp");
-					res_url = "/resources/login_success.jsp";
-				} else {  // 비밀번호가 틀린 경우
-					req.setAttribute("error_message", "비밀번호가 일치하지 않습니다.");
-					// res.sendRedirect("/jsp08_member/resources/error.jsp");
-					res_url = "/resources/error.jsp";
-				}
-			}  else { // 아이디가 없는 경우
-				req.setAttribute("error_message", id + "는(은) 존재하지 않는 아이디 입니다. 다시 입력하세요.");
-				// res.sendRedirect("/jsp08_member/resources/error.jsp");
+				req.setAttribute("error_message", id + "는(은) 이미 존재하는 아이디입니다. 다시 입력하세요.");
 				res_url = "/resources/error.jsp";
-				// res_url = "/login_form.jsp";
+			} else {
+				sql = "insert into member(id, name, password, regnumber, gender, mileage) values(?,?,?,?,?,?)";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, id);
+				pstmt.setString(2, name);
+				pstmt.setString(3, pw);
+				pstmt.setString(4, ssn);
+				pstmt.setString(5, gender);
+				pstmt.setInt(6, mileage);
+				cnt = pstmt.executeUpdate();
+				// System.out.println("회원등록 성공");
+				req.setAttribute("member", new Member(id, pw, name, ssn, gender, mileage));
+				res_url = "/resources/register_success.jsp";
 			}
 		} catch(Exception e) {
-			e.printStackTrace();
-			req.setAttribute("error_message", e.getMessage());
-			res.sendRedirect("/jsp08_member/resources/error.jsp");
+			req.setAttribute("error_message", "DB접속 실패 or 회원등록 실패");
+			res_url = "/resources/error.jsp";
 		} finally {
 			JDBCUtil.close(conn, pstmt, rs);
 		}
@@ -87,7 +91,10 @@ public class LoginServlet extends HttpServlet {
 			RequestDispatcher dispatcher = req.getRequestDispatcher(res_url);
 			dispatcher.forward(req, res);
 		}
+		
+
 	}
+
 }
 
 

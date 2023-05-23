@@ -11,12 +11,13 @@
 </head>
 <body>
 	<div class="container" align="center">
-		<h3>로그인성공!!!</h3>
+		<h3>로그인성공</h3>
 		<% Member member = (Member) session.getAttribute("login_info"); %>
-		<h4><%= member.getName() %> 님이 로그인하셨습니다! 환영합니다!!</h4>
+		<h4><%= member.getName() %> 님이 로그인하셨습니다. 환영합니다.</h4>
 		<a href="logout" class="btn btn-primary mt-sm-5  mr-sm-2">Log Out</a>
 		<a href="list" class="btn btn-primary mt-sm-5 mr-sm-2">회원목록</a>
 <%-- 		<a href="/jsp08_member/member_detail.jsp?id=<%= member.getId() %>" class="btn btn-primary mt-sm-5 ">회원정보</a> --%>	
+		<a href="remove" class="btn btn-primary mt-sm-5 mr-sm-2">회원탈퇴</a>
     </div>
 </body>
 </html>

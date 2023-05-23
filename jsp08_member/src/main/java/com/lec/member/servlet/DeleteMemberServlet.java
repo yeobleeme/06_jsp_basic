@@ -18,8 +18,8 @@ import javax.servlet.http.HttpSession;
 import com.lec.member.dto.Member;
 import com.lec.member.jdbc.JDBCUtil;
 
-@WebServlet("/login")
-public class LoginServlet extends HttpServlet {
+@WebServlet("/delete")
+public class DeleteMemberServlet extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse res) 
@@ -33,62 +33,63 @@ public class LoginServlet extends HttpServlet {
 		process(req, res);
 	}
 
+	
+	
 	private void process(HttpServletRequest req, HttpServletResponse res)
 			throws ServletException, IOException {
 		
 		String id = req.getParameter("id");
-		String pw = req.getParameter("pw");
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String sql = "select id, password, name, regnumber, gender, mileage from member where id=?";
+		String sql = "delete from member where id=?";
+		String res_url = "";
+		int cnt = 0;
 		
 		ServletContext sct = getServletContext();
 		String url = sct.getInitParameter("url");
 		String usr = sct.getInitParameter("user");
 		String pwd = sct.getInitParameter("pass");
-		String res_url = "";
 		
+		HttpSession sess = req.getSession();
+		Member member = (Member) sess.getAttribute("login_info");
 		
-		try {
-			conn = DriverManager.getConnection(url, usr, pwd);
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, id);
-			rs = pstmt.executeQuery();
-			
-			if(rs.next()) {
-				if(pw.equals(rs.getString(2))) {  // id가 있는 경우 pw를 비교
-					HttpSession sess = req.getSession();
-					Member member = new Member(id, pw, rs.getString(3), rs.getString(4), rs.getString(5), rs.getInt(6));
-					sess.setAttribute("login_info", member);
-					// res.sendRedirect("/jsp08_member/resources/login_success.jsp");
-					res_url = "/resources/login_success.jsp";
-				} else {  // 비밀번호가 틀린 경우
-					req.setAttribute("error_message", "비밀번호가 일치하지 않습니다.");
-					// res.sendRedirect("/jsp08_member/resources/error.jsp");
-					res_url = "/resources/error.jsp";
-				}
-			}  else { // 아이디가 없는 경우
-				req.setAttribute("error_message", id + "는(은) 존재하지 않는 아이디 입니다. 다시 입력하세요.");
-				// res.sendRedirect("/jsp08_member/resources/error.jsp");
+		if(member != null) {
+			try {
+				conn = DriverManager.getConnection(url, usr, pwd);
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, id);
+				cnt = pstmt.executeUpdate();
+				res_url = "/list";
+				
+			} catch(Exception e) {
+				e.printStackTrace();
+				req.setAttribute("error_message", e.getMessage());
 				res_url = "/resources/error.jsp";
-				// res_url = "/login_form.jsp";
+				
+			} finally {
+				JDBCUtil.close(conn, pstmt, rs);
 			}
-		} catch(Exception e) {
-			e.printStackTrace();
-			req.setAttribute("error_message", e.getMessage());
-			res.sendRedirect("/jsp08_member/resources/error.jsp");
-		} finally {
-			JDBCUtil.close(conn, pstmt, rs);
+		} else {
+			req.setAttribute("error_message", "로그인이 되지 않았습니다. 로그인 후 탈퇴 가능");
+			res_url = "/login_form.jsp";
 		}
 		
 		if(res_url != null) {
 			RequestDispatcher dispatcher = req.getRequestDispatcher(res_url);
 			dispatcher.forward(req, res);
 		}
+		
+
 	}
+
 }
+
+
+
+
+
 
 
 
