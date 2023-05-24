@@ -230,6 +230,26 @@ public class BoardDAO {
 	
 	
 	// 글삭제하기
+	public int deleteBoard(int bno) {
+		
+		int deleteCount = 0;
+		
+		PreparedStatement pstmt = null;
+		String sql = "delete from board where bno = " + bno;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			deleteCount = pstmt.executeUpdate();
+		} catch (Exception e) {
+			System.out.println("게시글 삭제 실패" + e.getMessage());
+		} finally {
+			JDBCUtility.close(null, pstmt, null);
+		}
+		
+		return deleteCount;
+	}
+	
+	
 	// 댓글쓰기
 	
 }

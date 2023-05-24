@@ -7,9 +7,10 @@
   	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" 
 		integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ"
 		crossorigin="anonymous">  
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> 
   	<link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/css/bootstrap.min.css" rel="stylesheet">
   	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
-	<title>게시글 등록</title>
+	<title>게시글 작성</title>
   	<style>
   		.login-btn {
   			clear: black;
@@ -31,8 +32,8 @@
 <body>
 	<div class="container" align="center">
 		<div class="jumbotron">
-			<h3>게시판 글쓰기</h3>
-			<p>게시판 글쓰기 페이지 입니다. 글을 작성 해주세요.</p>
+			<h3>게시글 작성 페이지</h3>
+			<p>게시글을 작성해주세요.</p>
 		</div>
 		
 		<form action="boardWrite.bo" method="post" class="form-group" name="boardform" 
@@ -59,7 +60,7 @@
 					<div class="input-group-prepend"><span class="input-group-text"><i class="fas fa-file-alt"></i></span></div>
 					<div class="custom-file">
 						<input type="file" class="custom-file-input" name="file" id="file"/>
-						<label for="board_file" class="custom-file-label" style="text-algin:left">업로드할 파일을 선택하세요.</label>
+						<label for="board_file" class="custom-file-label" style="text-algin:left">업로드할 파일을 선택하세요!!!</label>
 					</div>
 				</div>
 				
@@ -70,6 +71,13 @@
 			</div>		
 		</form>
 	</div>
+	<script>
+		$(".custom-file-input").on("change", function() {
+			// var fileName = $(this).val();   // 전체파일명
+			var fileName = $(this).val().split("\\").pop(); // only 파일명
+			$(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+		})
+	</script>	
 </body>
 </html>
 

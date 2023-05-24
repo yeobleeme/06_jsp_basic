@@ -3,10 +3,9 @@ package com.lec.board.service;
 import java.sql.Connection;
 
 import com.lec.board.dao.BoardDAO;
-import com.lec.board.vo.BoardBean;
 import com.lec.db.JDBCUtility;
 
-public class BoardModifyService {
+public class BoardDeleteService {
 
 	public boolean isBoardWriter(int bno, String pass) {
 		
@@ -16,26 +15,35 @@ public class BoardModifyService {
 		boardDAO.setConnection(conn);
 		isWriter = boardDAO.isBoardWriter(bno, pass);
 		return isWriter;
-	}
-
-	public boolean modifyBoard(BoardBean board) {
-		boolean isModifySuccess = false;
+	}	
+	
+	public boolean deleteBoard(int bno) {
+		
+		boolean isDeleteSuccess = false;
 		
 		Connection conn = JDBCUtility.getConnection();
 		BoardDAO boardDAO = BoardDAO.getInstance();
 		boardDAO.setConnection(conn);
-		int updateCount = boardDAO.updateBoard(board);
+		int deleteCount = boardDAO.deleteBoard(bno);
 		
-		if(updateCount>0) {
+		if(deleteCount>0) {
 			JDBCUtility.commit(conn);
 			JDBCUtility.close(conn, null, null);
-			isModifySuccess = true;
+			isDeleteSuccess = true;
 		} else {
 			JDBCUtility.rollback(conn);
 		}
-		return isModifySuccess;
+		return isDeleteSuccess;
 	}
 }
+
+
+
+
+
+
+
+
 
 
 

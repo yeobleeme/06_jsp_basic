@@ -22,19 +22,20 @@ public class BoardModifyAction implements Action {
 		BoardBean board = null;
 		
 		String saveFolder = "d:/LEEJY/123";
-		int fileSize = 1024 * 1024 * 5;
-		
+		int fileSize = 1024*2014*5;
+				
 		ServletContext sct = req.getServletContext();
 		boolean isModifySuccess = false;
-		int bno = Integer.parseInt(req.getParameter("bno"));
-		
+		boolean isWriter = false;
+
 		try {
-			MultipartRequest multi = new MultipartRequest(req, saveFolder, fileSize, "utf-8", 
-										new DefaultFileRenamePolicy());
-			String pass = multi.getParameter("pass");
+			MultipartRequest multi = new MultipartRequest(req, saveFolder, fileSize, "utf-8",
+					new DefaultFileRenamePolicy());
+			int bno = Integer.parseInt(multi.getParameter("bno"));
+			String pass = multi.getParameter("pass");			
 			board = new BoardBean();
 			BoardModifyService boardModifyService = new BoardModifyService();
-			boolean isWriter = boardModifyService.isBoardWriter(bno, pass);
+			isWriter = boardModifyService.isBoardWriter(bno, pass);	
 			
 			if(isWriter) {
 				board.setBno(bno);
@@ -52,38 +53,21 @@ public class BoardModifyAction implements Action {
 					PrintWriter out = res.getWriter();
 					out.println("<script>");
 					out.println("   alert('게시글 수정 실패');");
-					out.println("	history.bakc();");
-					out.println("</script>");
+					out.println("   history.back();");
+					out.println("</script>");					
 				}
-				
 			} else {
 				res.setContentType("text/html; charset=UTF-8");
 				PrintWriter out = res.getWriter();
 				out.println("<script>");
 				out.println("   alert('게시글을 수정할 권한이 없습니다.');");
-				out.println("	history.bakc();");
+				out.println("   history.back();");
 				out.println("</script>");
 			}
-			
-		} catch (IOException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-		
 		return forward;
 	}
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-

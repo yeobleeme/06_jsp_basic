@@ -16,9 +16,9 @@
 	<div class="container mt-sm-5" align="center">
 	
 		<div class="jumbotron">
-			<h3>게시글목록보기</h3>
+			<h3>게시글 목록</h3>
 			<c:if test="${ boardList.isEmpty() }">
-				<h4><p class="bg-danger text-white">등록된 게시글이 존재하지 않습니다!</p></h4>
+				<h4><p class="bg-danger text-white">등록된 게시글이 존재하지 않습니다.</p></h4>
 			</c:if>
 		</div>
 	
@@ -28,7 +28,7 @@
 					<option value="writer">작성자</option>
 					<option value="subject">제목</option>
 				</select>
-				<input type="text" name="q" class="form-control col-sm-8 mr-sm-2" placeholder="검색어를 입력하세요..."/>
+				<input type="text" name="q" class="form-control col-sm-8 mr-sm-2" placeholder="검색어를 입력하세요."/>
 				<button type="submit" class="btn btn-primary col-sm-1 mr-sm-2">검색</button>
 				<a href="boardWriteForm.bo" class="btn btn-success col-sm-1">글쓰기</a>
 			</div>
@@ -37,7 +37,7 @@
 		
 		<table class="table table-bordered table-striped table-hover">
 			<thead>
-				<tr>
+				<tr align="center">
 					<th>번호</th>
 					<th>제목</th>
 					<th>작성자</th>
@@ -53,8 +53,18 @@
 					<td><a href="boardDetail.bo?bno=${board.getBno()}">${board.getSubject()}</a></td>
 					<td>${board.getWriter()}</td>
 					<td>${board.getCrtdate()}</td>
-					<td>${board.getFile()}</td>
-					<td><i class="fas fa-trash-alt"></i></td>
+					<td align="center">
+						<c:if test="${!empty board.getFile()}">
+							<a href="download.bo?bno=${board.getBno()}&fn=${board.getFile()}">
+								<i class="fas fa-file-download">	${board.getFile()}</i>
+							</a>
+						</c:if>			
+					</td>
+					<td align="center">
+						<a href="boardDeleteForm.bo?bno=${board.getBno()}">
+							<i class="fas fa-trash-alt"></i>
+						</a>
+					</td>
 				</tr>
 			</c:forEach>
 			</tbody>
@@ -72,11 +82,9 @@
 			</c:forEach>
 			
 			<li class="page-item"><a href="#" class="page-link"><i class="fas fa-forward"></i></a></li>
-			<li class="page-item"><a href="#" class="page-link"><i class="fas fa-fast-fowward"></i></a></li>
+			<li class="page-item"><a href="#" class="page-link"><i class="fas fa-fast-forward"></i></a></li>
 		</ul>
-	
 	</div>
-	
 
 </body>
 </html>

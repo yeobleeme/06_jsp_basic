@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.lec.board.action.Action;
+import com.lec.board.action.BoardDeleteAction;
+import com.lec.board.action.BoardDeleteFormAction;
 import com.lec.board.action.BoardDetailAction;
 import com.lec.board.action.BoardListAction;
 import com.lec.board.action.BoardModifyAction;
@@ -69,6 +71,14 @@ public class BoardController extends HttpServlet {
 			
 		} else if(command.equalsIgnoreCase("/boardModify.bo")) {
 			action = new BoardModifyAction();
+			forward = action.execute(req, res);
+			
+		} else if(command.equalsIgnoreCase("/boardDeleteForm.bo")) {
+			action = new BoardDeleteFormAction();
+			forward = action.execute(req, res);
+			
+		} else if(command.equalsIgnoreCase("/boardDelete.bo")) {
+			action = new BoardDeleteAction();
 			forward = action.execute(req, res);
 			
 		}
