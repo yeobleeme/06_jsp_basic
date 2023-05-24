@@ -36,7 +36,7 @@ public class BoardDeleteAction implements Action {
 				try {
 					PrintWriter out = res.getWriter();
 					out.println("<script>");
-					out.println("   alert('게시글을 삭제에 실패');");
+					out.println("   alert('게시글 삭제 실패');");
 					out.println("   history.back();");
 					out.println("</script>");
 				} catch (IOException e) {

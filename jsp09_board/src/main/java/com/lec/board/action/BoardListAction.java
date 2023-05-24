@@ -24,7 +24,6 @@ public class BoardListAction implements Action {
 		
 		req.setAttribute("boardList", boardList);
 		
-		
 		ActionForward forward = new ActionForward();
 		forward.setPath("/board/board_list.jsp");
 		return forward;
@@ -34,10 +33,4 @@ public class BoardListAction implements Action {
 	
 
 }
-
-
-
-
-
-
 

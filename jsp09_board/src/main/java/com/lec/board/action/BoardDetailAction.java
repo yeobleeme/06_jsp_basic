@@ -12,7 +12,7 @@ public class BoardDetailAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest req, HttpServletResponse res) {
 		
-		// 글 상세보기
+		// 게시글 상세보기
 		int bno = Integer.parseInt(req.getParameter("bno"));
 		
 		BoardDetailService boardDetailService = new BoardDetailService();

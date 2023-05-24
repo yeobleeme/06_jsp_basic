@@ -18,12 +18,12 @@ public class BoardModifyFormAction implements Action {
 		
 		BoardDetailService boardDetailService = new BoardDetailService();
 		BoardBean board = boardDetailService.getBoard(bno);
+		
 		req.setAttribute("board", board);
 		forward.setPath("/board/board_modify.jsp");
 		
 		return forward;
 	}
-	
 	
 
 }

@@ -28,7 +28,7 @@ public class BoardDAO {
 		this.conn = conn;
 	}
 	
-	// 글쓰기
+	// 게시글 작성
 	public int insertBoard(BoardBean board) {
 	
 		PreparedStatement pstmt = null;
@@ -57,7 +57,7 @@ public class BoardDAO {
 			pstmt.setInt(10,  0);
 			insertCount = pstmt.executeUpdate();
 		} catch (Exception e) {
-			System.out.println("게시글 등록 실패!!! : " + e.getMessage());
+			System.out.println("게시글 등록 실패 " + e.getMessage());
 		} finally {
 			JDBCUtility.close(null, pstmt, rs);
 		}
@@ -65,7 +65,7 @@ public class BoardDAO {
 		return insertCount;
 	}
 
-	// 글갯수구하기
+	// 게시글 수
 	public int selectListCount() {
 		int listCount = 0;
 		
@@ -85,7 +85,7 @@ public class BoardDAO {
 		return listCount;
 	}
 
-	// 글목록조회하기
+	// 게시글 목록 조회
 	public List<BoardBean> selectBoardList() {
 		
 		BoardBean board = null;
@@ -113,7 +113,7 @@ public class BoardDAO {
 				boardList.add(board);
 			}
 		} catch (Exception e) {
-			System.out.println("게시글 조회 실패!! : " + e.getMessage());
+			System.out.println("게시글 조회 실패 " + e.getMessage());
 		} finally {
 			JDBCUtility.close(conn, pstmt, rs);
 		}
@@ -121,7 +121,7 @@ public class BoardDAO {
 	}
 
 	
-	// 글조회수증가하기
+	// 게시글 조회수 증가
 	public int updateReadCount(int bno) {
 		
 		int updateCount = 0;
@@ -142,7 +142,7 @@ public class BoardDAO {
 		return updateCount;
 	}
 
-	// 글상세보기
+	// 게시글 상세조회
 	public BoardBean selectBoard(int bno) {
 		
 		BoardBean board = null;
@@ -178,7 +178,7 @@ public class BoardDAO {
 		return board;
 	}
 
-	// 글작성자확인
+	// 작성자 확인
 	public boolean isBoardWriter(int bno, String pass) {
 		
 		boolean isWriter = false;
@@ -203,7 +203,7 @@ public class BoardDAO {
 	}
 
 	
-	// 글수정하기
+	// 게시글 수정
 	public int updateBoard(BoardBean board) {
 		int updateCount = 0;
 		
@@ -220,7 +220,7 @@ public class BoardDAO {
 			updateCount = pstmt.executeUpdate();
 			
 		} catch (Exception e) {
-			System.out.println("게시글 수정 실패" + e.getMessage());
+			System.out.println("게시글 수정 실패 " + e.getMessage());
 		} finally {
 			JDBCUtility.close(null, pstmt, null);
 		}
@@ -229,7 +229,7 @@ public class BoardDAO {
 	}
 	
 	
-	// 글삭제하기
+	// 게시글 삭제
 	public int deleteBoard(int bno) {
 		
 		int deleteCount = 0;
@@ -241,7 +241,7 @@ public class BoardDAO {
 			pstmt = conn.prepareStatement(sql);
 			deleteCount = pstmt.executeUpdate();
 		} catch (Exception e) {
-			System.out.println("게시글 삭제 실패" + e.getMessage());
+			System.out.println("게시글 삭제 실패 " + e.getMessage());
 		} finally {
 			JDBCUtility.close(null, pstmt, null);
 		}
@@ -250,7 +250,7 @@ public class BoardDAO {
 	}
 	
 	
-	// 댓글쓰기
+	// 댓글 작성
 	
 }
 
