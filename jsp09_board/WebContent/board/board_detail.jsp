@@ -10,7 +10,7 @@
   	<link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/css/bootstrap.min.css" rel="stylesheet">
   	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
 	<title>글상세보기</title>
-  	<style>
+  	<style> 
   		.login-btn {
   			clear: black;
   			/* background-color: #FFC312; */
@@ -52,15 +52,16 @@
 		<c:if test="${board.getFile() != null}">
 			<div class="form-group input-group">
 				<div class="input-group-prepend"><span class="input-group-text"><i class="fas fa-file-alt"></i></span></div>
-			<input type="text" class="form-control" name="file" id="file" value="${board.getFile()}" readonly>
+				<input type="text" class="form-control" name="file" id="file" value="${board.getFile()}" readonly>
 			</div>			
 		</c:if>
 		<br />
+		
 		<div class="form-group input-group">
 			<a href="boardModifyForm.bo?bno=${param.bno}" class="btn btn-success mr-sm-3">수정</a>
 			<a href="boardDeleteForm.bo?bno=${param.bno}" class="btn btn-success mr-sm-3">삭제</a>
 			<a href="boardReplyForm.bo?bno=${param.bno}" class="btn btn-success mr-sm-3">답변</a>
-			<a href="boardList.bo?" class="btn btn-success mr-sm-3">목록</a>
+			<a href="boardList.bo" class="btn btn-success mr-sm-3">글목록</a>
 		</div>
 	</div>
 </body>

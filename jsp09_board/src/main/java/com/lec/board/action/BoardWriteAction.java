@@ -19,11 +19,11 @@ public class BoardWriteAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest req, HttpServletResponse res) 
 			 {
-		// System.out.println("===> 게시글 등록");
+		// System.out.println("====> 글등록하기");
 		ActionForward forward = null;
 		BoardBean board = null;
 		String realFolder = "";
-		String saveFolder = "/Users/yeoblee/Desktop/test";
+		String saveFolder = "d:/LEEJY/123";
 		int filesize = 1024*1024*5;
 		
 		ServletContext context = req.getServletContext();
@@ -41,7 +41,7 @@ public class BoardWriteAction implements Action {
 			board.setContent(multi.getParameter("content"));
 			board.setFile(multi.getOriginalFileName((String) multi.getFileNames().nextElement()));
 			
-			// insert 로직 담당 service객체
+			// insert로직담당할 service객체
 			BoardWriteService boardWriteService = new BoardWriteService();
 			boolean isWriteSucess = boardWriteService.registerBoard(board);
 			

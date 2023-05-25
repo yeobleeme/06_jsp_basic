@@ -21,7 +21,7 @@ public class BoardModifyAction implements Action {
 		ActionForward forward = null;
 		BoardBean board = null;
 		
-		String saveFolder = "/Users/yeoblee/Desktop/test";
+		String saveFolder = "d:/LEEJY/123";
 		int fileSize = 1024*2014*5;
 				
 		ServletContext sct = req.getServletContext();

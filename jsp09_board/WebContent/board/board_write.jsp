@@ -52,7 +52,7 @@
 			</div>
 			<div class="form-group input-group">
 				<div class="input-group-prepend"><span class="input-group-text"><i class="fas fa-comment-dots"></i></span></div>
-				<textarea name="content" id="content" cols="40" rows="15" class="form-control" required placeholder="content ...">내용</textarea>
+				<textarea name="content" id="content" cols="40" rows="15" class="form-control" required placeholder="content ...">글내용...</textarea>
 			</div>
 
 			<div class="form-group input-group">
@@ -60,7 +60,7 @@
 					<div class="input-group-prepend"><span class="input-group-text"><i class="fas fa-file-alt"></i></span></div>
 					<div class="custom-file">
 						<input type="file" class="custom-file-input" name="file" id="file"/>
-						<label for="board_file" class="custom-file-label" style="text-algin:left">업로드할 파일을 선택하세요.</label>
+						<label for="board_file" class="custom-file-label" style="text-algin:left">업로드할 파일을 선택하세요!!!</label>
 					</div>
 				</div>
 				

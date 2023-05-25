@@ -7,39 +7,30 @@ import java.util.List;
 import com.lec.board.dao.BoardDAO;
 import com.lec.board.vo.BoardBean;
 import com.lec.db.JDBCUtility;
-
+ 
 public class BoardListService {
-	
-	public int getListCount() {
-		
-		// 총 레코드 select count(*) from board
+
+	public int getListCount(String f, String q) {
+
+		// 총레코드건수 : select count(*) from board where writer like '%홍길%'
 		int listCount = 0;
-		
 		Connection conn = JDBCUtility.getConnection();
 		BoardDAO boardDAO = BoardDAO.getInstance();
 		boardDAO.setConnection(conn);
-		listCount = boardDAO.selectListCount();
-		
+		listCount = boardDAO.selectListCount(f, q);  
 		return listCount;
 	}
-	
-	public List<BoardBean> getBoardList() {
-		
-		// select * from board limit 0, 10;
+
+	public List<BoardBean> getBoardList(int p, int limit, String f, String q) {
+		// select * from borad where writer like '%홍길%' limit 0, 10;
 		List<BoardBean> boardList = new ArrayList<>();
 		Connection conn = JDBCUtility.getConnection();
 		BoardDAO boardDAO = BoardDAO.getInstance();
 		boardDAO.setConnection(conn);
-		boardList = boardDAO.selectBoardList();
+		boardList = boardDAO.selectBoardList(p, limit, f, q);
 		return boardList;
-
 	}
-		
-
 }
-
-
-
 
 
 
