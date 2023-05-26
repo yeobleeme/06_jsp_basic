@@ -38,11 +38,11 @@ public class BoardListAction implements Action{
 		int totalPage = (int)((double)listCount / limit + 0.95);
 		
 		// 현재페이지의 시작페이지수(1~100)
-		int startPage = (((int)((double)page / 10 + 0.9)) -1) * 10 + 1;
+		int startPage = (p-1) / 10 * 10 + 1;
 		
 		// 현재페이지의 마지막페이지수
-		int endPage = startPage + 10 - 1;
-		if(endPage > totalPage) endPage = totalPage;
+		int endPage = startPage + 9;
+		endPage = endPage > totalPage ? (totalPage > 0 ? totalPage : 1) : endPage;
 		
 		PageInfo pageInfo = new PageInfo();
 		pageInfo.setListCount(listCount);
@@ -59,11 +59,6 @@ public class BoardListAction implements Action{
 		return forward;
 	}
 }
-
-
-
-
-
 
 
 

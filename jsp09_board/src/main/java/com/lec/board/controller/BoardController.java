@@ -56,7 +56,7 @@ public class BoardController extends HttpServlet {
 
 		if(command.equals("/boardWriteForm.bo")) {
 			forward = new ActionForward();
-			forward.setPath("/board/board_write.jsp");
+			forward.setPath("/board/board_write.jsp?p=" + p + "&f=" + f + "&q=" + q);
 		} else if(command.equals("/boardWrite.bo")) {
 			action = new BoardWriteAction();
 			forward = action.execute(req, res);
@@ -84,6 +84,12 @@ public class BoardController extends HttpServlet {
 		} else if(command.equals("/boardReply.bo")) {
 			action = new BoardReplyAction();
 			forward = action.execute(req, res);
+		} else if(command.equals("/download.bo")) {
+			forward = new ActionForward();
+			forward.setPath("/board/board_download.jsp?p=" + p + "&f=" + f + "&q=" + q + "&fn=" + fn);
+		} else if(command.equals("/error.bo")) {
+			forward = new ActionForward();
+			forward.setPath("/board/error.jsp");
 		}
 
 		if(forward != null) {

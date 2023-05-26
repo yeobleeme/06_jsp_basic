@@ -13,12 +13,11 @@
 	<title>글목록보기</title>
 </head>
 <body> 
-	<%-- ${ pageInfo.toString() }<hr> --%>
-	<%-- ${param.p} <br /> 
-	${param.f} <br /> 
-	${param.q} <br /> 
-	${param.fn} <br />  --%>
-	
+<%-- 	${ pageInfo.toString() }<br>
+	${ param.p }<br>
+	${ param.f }<br>
+	${ param.q }<br>
+	${ param.fn }<hr> --%>
 	<div class="container mt-sm-5" align="center">
 	
 		<div class="jumbotron">
@@ -31,11 +30,11 @@
 		<form action="boardList.bo" class="form-line">
 			<div class="input-group">
 				<select name="f" id="" class="for-control col-sm-2 mr-sm-2">
-					<option ${param.f == "writer" ? "selected" : ""} value="writer">작성자</option>
-					<option ${param.f == "subject" ? "selected" : ""} value="subject">제목</option>
+					<option ${ param.f == "writer" ? "selected" : "" } value="writer">작성자</option>
+					<option ${ param.f == "subject" ? "selected" : "" }value="subject">제목</option>
 				</select>
-				<input type="text" name="q" class="form-control col-sm-8 mr-sm-2"
-						 value ="${param.q}" placeholder="검색어를 입력하세요."/>
+				<input type="text" name="q" class="form-control col-sm-8 mr-sm-2" value="${ param.q }" 
+					placeholder="검색어를 입력하세요..."/>
 				<button type="submit" class="btn btn-primary col-sm-1 mr-sm-2">검색</button>
 				<a href="boardWriteForm.bo?p=${param.p}" class="btn btn-success col-sm-1">글쓰기</a>
 			</div>
@@ -91,23 +90,21 @@
 	<div class="container" align="center">
 		<ul class="pagination justify-content-center">
 		
-			<c:if test="${param.p != 1}">
+			<c:if test="${ pageInfo.getStartPage() != 1 }">
 				<li class="page-item"><a href="boardList.bo?p=1" class="page-link"><i class="fas fa-fast-backward"></i></a></li>
-				<li class="page-item"><a href="boardLst.bo?p=${param.p - 10}" class="page-link"><i class="fas fa-backward"></i></a></li>
+				<li class="page-item"><a href="boardList.bo?p=${ pageInfo.getStartPage() - 10 }" class="page-link"><i class="fas fa-backward"></i></a></li>			
 			</c:if>
-		
-			<c:forEach var="page_num" begin="${param.p}" end="${param.p + 9}">
-				<li class="page-item"><a href="boardList.bo?p=${page_num}" class="page-link">${page_num}</a></li>
+
+			<c:forEach var="page_num" begin="${ pageInfo.getStartPage() }" end="${ pageInfo.getEndPage() }">
+				<li class="page-item"><a href="boardList.bo?p=${ page_num }" class="page-link">${page_num}</a></li>
 			</c:forEach>
 			
-			<c:if test="${pageInfo.getEndPage() < pageInfo.getTotalPage()}">
-			<li class="page-item"><a href="boardList.bo?p=${param.p + 1}" class="page-link"><i class="fas fa-forward"></i></a></li>
-			<li class="page-item"><a href="boardList.bo?p=${pageInfo.getTotalPage()}" class="page-link"><i class="fas fa-fast-forward"></i></a></li>
+			<c:if test="${ pageInfo.getEndPage() < pageInfo.getTotalPage() }">
+				<li class="page-item"><a href="boardList.bo?p=${ pageInfo.getStartPage() + 10 }" class="page-link"><i class="fas fa-forward"></i></a></li>
+				<li class="page-item"><a href="boardList.bo?p=${ pageInfo.getTotalPage() }" class="page-link"><i class="fas fa-fast-forward"></i></a></li>
 			</c:if>
-			
 		</ul>
 	</div>
-
 </body>
 </html>
 
