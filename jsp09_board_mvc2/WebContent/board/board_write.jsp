@@ -40,19 +40,19 @@
 				enctype="multipart/form-data">
 			<div class="form-group input-group">
 				<div class="input-group-prepend"><span class="input-group-text"><i class="fas fa-user"></i></span></div>
-				<input type="text" class="form-control" name="writer" id="writer" value="홍길동" required placeholder="board writer...">
+				<input type="text" class="form-control" name="writer" id="writer" value="홍길동" required placeholder="">
 			</div>
 			<div class="form-group input-group">
 				<div class="input-group-prepend"><span class="input-group-text"><i class="fas fa-key"></i></span></div>
-				<input type="password" class="form-control" name="pass" id="pass" value="1" required placeholder="password ...">
+				<input type="password" class="form-control" name="pass" id="pass" value="1" required placeholder="">
 			</div>
 			<div class="form-group input-group">
 				<div class="input-group-prepend"><span class="input-group-text"><i class="fas fa-clipboard"></i></span></div>
-				<input type="text" class="form-control" name="subject" id="subject" value="<%= new java.util.Date() %>" required placeholder="subject ...">
+				<input type="text" class="form-control" name="subject" id="subject" value="<%= new java.util.Date() %>" required placeholder="">
 			</div>
 			<div class="form-group input-group">
 				<div class="input-group-prepend"><span class="input-group-text"><i class="fas fa-comment-dots"></i></span></div>
-				<textarea name="content" id="content" cols="40" rows="15" class="form-control" required placeholder="content ...">글내용...</textarea>
+				<textarea name="content" id="content" cols="40" rows="15" class="form-control" required placeholder=""></textarea>
 			</div>
 
 			<div class="form-group input-group">
@@ -60,13 +60,13 @@
 					<div class="input-group-prepend"><span class="input-group-text"><i class="fas fa-file-alt"></i></span></div>
 					<div class="custom-file">
 						<input type="file" class="custom-file-input" name="file" id="file"/>
-						<label for="board_file" class="custom-file-label" style="text-algin:left">업로드할 파일을 선택하세요!!!</label>
+						<label for="board_file" class="custom-file-label" style="text-algin:left">업로드할 파일을 선택하세요.</label>
 					</div>
 				</div>
 				
 				<div class="form-group mt-md-5">
 					<input type="reset" class="btn btn-success float-right login-btn ml-sm-2" value="새로고침"/>
-					<input type="submit" class="btn btn-success float-right login-btn" value="글등록"/>
+					<input type="submit" class="btn btn-success float-right login-btn" value="등록"/>
 				</div>
 			</div>		
 		</form>

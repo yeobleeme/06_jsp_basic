@@ -21,9 +21,9 @@
 	<div class="container mt-sm-5" align="center">
 	
 		<div class="jumbotron">
-			<h3>게시글목록보기</h3>
+			<h3>게시글 목록</h3>
 			<c:if test="${ boardList.isEmpty() }">
-				<h4><p class="bg-danger text-white">등록된 게시글이 존재하지 않습니다!</p></h4>
+				<h4><p class="bg-danger text-white">등록된 게시글이 존재하지 않습니다.</p></h4>
 			</c:if>
 		</div>
 	
@@ -36,7 +36,7 @@
 				<input type="text" name="q" class="form-control col-sm-8 mr-sm-2" value="${ param.q }" 
 					placeholder="검색어를 입력하세요..."/>
 				<button type="submit" class="btn btn-primary col-sm-1 mr-sm-2">검색</button>
-				<a href="boardWriteForm.bo?p=${param.p}" class="btn btn-success col-sm-1">글쓰기</a>
+				<a href="boardWriteForm.bo?p=${param.p}" class="btn btn-success col-sm-1">게시글 작성</a>
 			</div>
 		</form>
 		<br class="mt-sm-5" />

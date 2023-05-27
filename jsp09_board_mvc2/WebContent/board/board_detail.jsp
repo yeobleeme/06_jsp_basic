@@ -9,7 +9,7 @@
 		crossorigin="anonymous">  
   	<link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/css/bootstrap.min.css" rel="stylesheet">
   	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
-	<title>글상세보기</title>
+	<title>게시글 상세</title>
   	<style> 
   		.login-btn {
   			clear: black;
@@ -31,7 +31,7 @@
 <body>
 	<div class="container" align="center">
 		<div class="jumbotron">
-			<h3>글 상세내용 보기</h3>
+			<h3>게시글 상세보기</h3>
 		</div>
 		
 		<div class="form-group input-group">
@@ -61,7 +61,7 @@
 			<a href="boardModifyForm.bo?bno=${param.bno}" class="btn btn-success mr-sm-3">수정</a>
 			<a href="boardDeleteForm.bo?bno=${param.bno}" class="btn btn-success mr-sm-3">삭제</a>
 			<a href="boardReplyForm.bo?bno=${param.bno}" class="btn btn-success mr-sm-3">답변</a>
-			<a href="boardList.bo" class="btn btn-success mr-sm-3">글목록</a>
+			<a href="boardList.bo" class="btn btn-success mr-sm-3">목록</a>
 		</div>
 	</div>
 </body>
