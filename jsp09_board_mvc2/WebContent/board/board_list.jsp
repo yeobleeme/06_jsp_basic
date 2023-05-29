@@ -36,7 +36,7 @@
 				<input type="text" name="q" class="form-control col-sm-8 mr-sm-2" value="${ param.q }" 
 					placeholder="검색어를 입력하세요..."/>
 				<button type="submit" class="btn btn-primary col-sm-1 mr-sm-2">검색</button>
-				<a href="boardWriteForm.bo?p=${param.p}" class="btn btn-success col-sm-1">게시글 작성</a>
+				<a href="boardWriteForm.bo?p=${param.p}" class="btn btn-success col-sm-1">게시글 등록</a>
 			</div>
 		</form>
 		<br class="mt-sm-5" />

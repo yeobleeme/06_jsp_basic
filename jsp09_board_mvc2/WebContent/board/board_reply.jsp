@@ -66,7 +66,7 @@
 				<input type="hidden" name="re_ref" value="${board.getRe_ref()}" />
 				<input type="hidden" name="re_lev" value="${board.getRe_lev()}" />
 				<input type="hidden" name="re_seq" value="${board.getRe_seq()}" />
-				<input type="submit" class="btn btn-success float-right login-btn mr-sm-2" value="답변 작성"/>
+				<input type="submit" class="btn btn-success float-right login-btn mr-sm-2" value="답변 등록"/>
 				<input type="reset" class="btn btn-success float-right " value="새로고침"/>
 			</div>
 								

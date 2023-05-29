@@ -9,6 +9,7 @@
 	<title>ERROR</title>
 </head>
 <body>
+	<h1>ERROR</h1>
 	<h3 class="bg-danger text-white" align="center"><%= request.getAttribute("msg") %></h3>
 </body>
 </html>

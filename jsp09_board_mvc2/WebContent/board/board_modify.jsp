@@ -68,7 +68,7 @@
 			
 			<div class="form-group input-group">
 				<input type="submit" class="btn btn-success float-right mr-sm-3" value="수정" />
-				<a href="javascript:history.go(-1)" class="btn btn-success float-right">이전</a>
+				<a href="javascript:history.go(-1)" class="btn btn-success float-right">이전페이지</a>
 			</div>
 			
 		</form>
