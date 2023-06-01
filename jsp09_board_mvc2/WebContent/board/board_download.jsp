@@ -14,7 +14,7 @@
 	
 	FileUtils.copyFileToDirectory(srcFile, desDir);
 	
-	// out.println("<h3> 파일이 성공적으로 다운로드 되었습니다. </h3>");
+	// out.println("<h3> Download Success </h3>");
 	
 %>
 
