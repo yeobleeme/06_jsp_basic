@@ -12,7 +12,7 @@
 <body>
 	<% Member member = (Member) request.getAttribute("member"); %>
 	<div class="container" align="center">
-		<h3>회원정보 수정</h3>
+		<h3>Modify Page</h3>
 		<form action="modify" method="post" class="form-group">
 			<table class="table table-dark mt-md-5">
 			<table class="table table-dark mt-md-5">
