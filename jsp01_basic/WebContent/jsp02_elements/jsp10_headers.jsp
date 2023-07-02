@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>jsp :: elements</title>
 </head>
 <body>
 	<h2>1. getHeaderNames()</h2>
