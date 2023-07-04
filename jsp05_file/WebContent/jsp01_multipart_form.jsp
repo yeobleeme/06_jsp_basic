@@ -12,8 +12,8 @@
 	파일을 업로드하기 위해서는 "multipart/form-data" 인코딩방식을 사용해야 하는데
 	데이터를 전송할 때 "multipart/form-data" 방식으로 전송해야 한다.
 	
-	이 방법으로 전송하기 위해서는 form태그의 enctype의 속성값을 "multipart/form-data"으로 
-	지정해야 한다. 그리고 "multipart/form-data" 인코딩방식을 post방식의 한 종류이기 때문에 
+	이 방법으로 전송하기 위해서는 form태그의 enctype의 속성값을 "multipart/form-data"으로 지정해야 한다. 
+	그리고 "multipart/form-data" 인코딩방식을 post방식의 한 종류이기 때문에 
 	method속성도 post로 설정해야 한다.
 -->
 <!DOCTYPE html>
