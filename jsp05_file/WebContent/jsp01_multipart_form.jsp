@@ -1,6 +1,6 @@
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!--  
-	파일전송 방식
+	파일전송 방식 
 	
 	게시판이나 자료실 등에서 제품이미지 등의 파일을 업로드할 경우 request기본객체 등에서
 	제공하는 기능으로 파일을 업로드할 수 있다.
