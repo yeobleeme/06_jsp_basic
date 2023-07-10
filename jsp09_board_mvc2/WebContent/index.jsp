@@ -11,7 +11,7 @@
 <body>
 	<div class="container" align="center">
 		<div class="jumbotron">
-			<h3>답변형 게시판 </h3>
+			<h3>답변형 게시판</h3>
 			<p>게시판관리페이지 입니다!! 글쓰기를 하려면 <strong class="text-danger">게시판글쓰기버튼</strong>을
 			클릭하세요</p>
 		</div>
