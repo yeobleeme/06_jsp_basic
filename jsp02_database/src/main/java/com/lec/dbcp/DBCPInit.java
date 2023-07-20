@@ -26,7 +26,7 @@ public class DBCPInit extends HttpServlet {
 	
 	private void loadJDBCDriver() {
 		// Class.forName("org.mariadb....."); 대신에
-		// web.xml에 정의하고 로딩
+		// web.xml에 정의하고 로딩 
 		String driverClass = getInitParameter("jdbcDriver");
 		
 		try {
