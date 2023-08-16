@@ -12,7 +12,7 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 
 /*
-	필터: Filter 
+	필터: Filter
 	
 	filter는 jsp/servlet에서 요청이 들어오면 요청을 처리하기 전에 이 요청이 올바른 요청인지 또는
 	자원에 접근권한이 있는지 등을 사전에 처리할 수 있도록 한다. 또한 응답하는 데이터를 변경하거나 
