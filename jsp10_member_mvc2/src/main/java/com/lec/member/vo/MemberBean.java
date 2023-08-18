@@ -3,7 +3,7 @@ package com.lec.member.vo;
 import java.util.Objects;
 
 public class MemberBean {
-	
+	 
 	private String id;
 	private String pw;
 	private String name;
