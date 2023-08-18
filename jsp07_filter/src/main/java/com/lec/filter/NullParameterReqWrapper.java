@@ -18,7 +18,7 @@ public class NullParameterReqWrapper extends HttpServletRequestWrapper {
 	}
 	
 
-	// http://localhost:8088/jsp07_filter/jsp01_nullpara.jsp?id=hong&name=gildong&member=t
+	// http://localhost:8088/jsp07_filter/jsp01_nullpara.jsp?id=hong&name=gildong&member=t 
 	public void checkNull(String[] paramNames) {
 		for(int i=0; i<paramNames.length; i++) {
 			// System.out.println("checkNull = " + paramNames[i]);
