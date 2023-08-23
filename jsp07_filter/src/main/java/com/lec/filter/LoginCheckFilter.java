@@ -24,7 +24,7 @@ public class LoginCheckFilter implements Filter {
 	public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain)
 			throws IOException, ServletException {
 		// System.out.println("doFilter() 메서드 호출");
-		
+		　
 		HttpServletRequest httpreq = (HttpServletRequest) req;
 		HttpSession sess = httpreq.getSession();
 		
