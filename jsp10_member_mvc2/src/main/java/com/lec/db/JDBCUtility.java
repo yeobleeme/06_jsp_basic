@@ -15,7 +15,7 @@ import javax.sql.DataSource;
 	외부에 있는 객체를 내부로 가져오기 위한 기법이다.
 	
 	tomcat서버와 같은 WAS는 특정 폴더에 데이터소스(라이브러리)등을 사용하기 위해
-	JNDI기술을 이용해서 정보를 가져오는 기법을 발한다.
+	JNDI기술을 이용해서 정보를 가져오는 기법을 발한다. 
 */
 
 public class JDBCUtility {
