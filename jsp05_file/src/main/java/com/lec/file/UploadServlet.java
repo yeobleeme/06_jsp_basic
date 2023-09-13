@@ -27,7 +27,7 @@ public class UploadServlet extends HttpServlet {
 		if(contentType != null && contentType.toLowerCase().startsWith("multipart/")) {
 			printPartInfo(req, out);
 		} else {
-			out.println("Content Type 이 multipart 타입이 아닙니다.");
+			out.println("Content Type 이 multipart 타입이 아닙니다. ");
 		}
 
 		out.println("</html></body>");
