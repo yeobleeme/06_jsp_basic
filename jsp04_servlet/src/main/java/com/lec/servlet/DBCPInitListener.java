@@ -20,7 +20,7 @@ public class DBCPInitListener implements ServletContextListener {
 	
 	@Override
 	public void contextInitialized(ServletContextEvent sce) {
-		// contextInitialized 메서드는 web.xml의 <context-param> 태그의 정보를 읽어온다.
+		// contextInitialized  메서드는 web.xml의 <context-param> 태그의 정보를 읽어온다.
 		String poolConfig = sce.getServletContext().getInitParameter("dbConnect");
 		System.out.println(poolConfig);
 		
